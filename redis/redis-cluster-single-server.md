@@ -26,9 +26,12 @@ sudo vim /opt/redis_cluster_config.sh
 
 Ghi vào file `redis_cluster_config.sh` với nội dung 
 
+*Chú ý: cần bind IP ra ngoài để các client có thể kết nối, tránh lỗi connection refused*
+
 ```bash
 CUR_DIR="/opt"
 PASSWORD="password"
+IP="10.10.10.105"
 cd $CUR_DIR
 mkdir -p ${CUR_DIR}/redis-cluster
 cd ${CUR_DIR}/redis-cluster
@@ -45,6 +48,7 @@ cluster-config-file ${CUR_DIR}/redis-cluster/${port}/nodes_${port}.conf
 logfile ${CUR_DIR}/redis-cluster/${port}/nodes_${port}.log
 requirepass ${PASSWORD}
 masterauth ${PASSWORD}
+bind ${IP}
 EOF
 chown -R redis.redis /opt/redis-cluster
 done
