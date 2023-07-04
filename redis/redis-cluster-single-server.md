@@ -74,7 +74,7 @@ Ghi vào file `redis_cluster_systemd.sh` với nội dung
 CUR_DIR="/opt"
 IP="10.10.10.105"
 cd $CUR_DIR
-for port in 7001 7002 7003 7004 7005 7006; do
+for port in 7000 7001 7002 7003 7004 7005; do
   cat > /etc/systemd/system/redis_${port}.service <<EOF
 [Unit]
 Description=Redis persistent key-value database
